@@ -17,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-4">
+    <div className="App grid grid-cols-2 grid-rows-2 h-screen gap-4 p-4">
       {weatherData.map((data, index) => (
-        <div key={index} className="weather rounded bg-blue-500 p-4 text-white shadow-lg min-w-full min-h-full md:min-w-96 md:min-h-96">
+        <div key={index} className="weather rounded bg-blue-500 p-4 text-white shadow-lg min-w-full min-h-full">
           <h2 className="text-3xl font-semibold">{data.name}</h2>
           {data.main && <p className="text-xl">{Math.round(data.main.temp)}°C</p>}
           {data.weather && data.weather[0] && <p className="capitalize">{data.weather[0].description}</p>}
