@@ -7,8 +7,7 @@ function App() {
   useEffect(() => {
     const cities = ['London', 'New York', 'Sydney', 'Tokyo'];
     const requests = cities.map((city) =>
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7756e2a092fe7f01ed4c4733fdeb4460
-      `)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=21d997e87f1d53224fc52c751a8d3e83`)
     );
 
     Promise.all(requests)
