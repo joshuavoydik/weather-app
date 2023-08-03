@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [weatherData, setWeatherData] = useState([]);
+
+  useEffect(() => {
+    const cities = ['London', 'New York', 'Sydney', 'Tokyo'];
+    const requests = cities.map((city) =>
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7756e2a092fe7f01ed4c4733fdeb4460
+      `)
+    );
+
+    Promise.all(requests)
+      .then((responses) => Promise.all(responses.map((res) => res.json())))
+      .then((data) => setWeatherData(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-4">
+      {weatherData.map((data, index) => (
+        <div key={index} className="weather rounded bg-blue-500 p-4 text-white shadow-lg min-w-full min-h-full md:min-w-96 md:min-h-96">
+          <h2 className="text-3xl font-semibold">{data.name}</h2>
+          {data.main && <p className="text-xl">{Math.round(data.main.temp)}°C</p>}
+          {data.weather && data.weather[0] && <p className="capitalize">{data.weather[0].description}</p>}
+        </div>
+      ))}
     </div>
-  );
+  );  
 }
 
 export default App;
