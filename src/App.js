@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App grid grid-cols-2 grid-rows-2 h-screen gap-4 p-4">
       {weatherData.map((data, index) => (
-        <div key={index} className="weather rounded-xl bg-yellow-400 p-4 text-white shadow-lg min-w-full min-h-full bg-opacity-70 flex flex-col justify-center items-center hover:bg-yellow-500 transition-all duration-200">
+        <div key={index} className="weather rounded-xl bg-yellow-500 p-4 text-white shadow-lg min-w-full min-h-full bg-opacity-70 flex flex-col justify-center items-center hover:bg-yellow-600 transition-all duration-200">
           <h2 className="text-6xl font-semibold">{data.name}</h2>
           {data.main && <p className="text-4xl">{Math.round(data.main.temp)}°F</p>}
         </div>
