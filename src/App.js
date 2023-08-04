@@ -21,7 +21,7 @@ function App() {
       {weatherData.map((data, index) => (
         <div key={index} className="weather rounded-xl bg-blue-800 p-4 text-white shadow-lg min-w-full min-h-full bg-opacity-90 flex flex-col justify-center items-center hover:bg-blue-900 transition-all duration-200">
           <h2 className="text-6xl font-semibold">{data.name}</h2>
-          {data.main && <p className="text-6xl">{Math.round(data.main.temp)}°F</p>}
+          {data.main && <p className="text-4xl">{Math.round(data.main.temp)}°F</p>}
         </div>
       ))}
     </div>
